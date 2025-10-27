@@ -105,7 +105,7 @@ const StrataAssetsSection: React.FC<StrataAssetsSectionProps> = ({
     return (
         <div css={styles.container}>
             <Typography variant="h4" css={styles.title}>
-                Strata x Ethena Assets sad
+                Strata x Ethena Assets
             </Typography>
 
             <div css={styles.cardsGrid}>
