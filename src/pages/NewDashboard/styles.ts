@@ -4,6 +4,9 @@ export const useStyles = () => {
     return {
         container: css`
             padding: 10px 0 0 10px;
+             @media(max-width:600px){
+                 padding: 10px;
+             }
         `,
 
         sectionStyles: css`

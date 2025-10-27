@@ -8,6 +8,9 @@ export const useStyles = () => {
         container: css`
             padding: 10px 0 0 10px;
             color: ${theme.palette.text.primary};
+             ${theme.breakpoints.down('sm')} {
+                padding: 10px;
+            }
         `,
 
         header: css`
