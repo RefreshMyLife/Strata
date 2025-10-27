@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  lumen-ui-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    command:
+      - sh
+      - -c
+      - |
+        npm install
+        npm start
+    ports:
+      - 3001:3001
+    volumes:
+      - ./:/usr/app
+    restart: always
+
+  lumen-ui-prod:
+    build: .
+    ports:
+      - 3001:80
+    restart: always

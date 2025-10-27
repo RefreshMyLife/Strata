@@ -1,0 +1,111 @@
+/** @jsxImportSource @emotion/react */
+import Typography from '@mui/material/Typography';
+import { ConnectWallet, LabeledInlineContent, Spinner } from 'components';
+import React from 'react';
+import { useTranslation } from 'translation';
+import { LockedDeposit } from 'types';
+import { convertWeiToTokens } from 'utilities';
+
+import { useGetStrataVaultLockedDeposits } from 'clients/api';
+import { TOKENS } from 'constants/tokens';
+import { useAuth } from 'context/AuthContext';
+
+import { useStyles } from './styles';
+import TEST_IDS from './testIds';
+
+export interface WithdrawalRequestListUiProps {
+  isInitialLoading: boolean;
+  hasError: boolean;
+  userLockedDeposits: LockedDeposit[];
+}
+
+const WithdrawalRequestListUi: React.FC<WithdrawalRequestListUiProps> = ({
+  isInitialLoading,
+  hasError,
+  userLockedDeposits,
+}) => {
+  const { t } = useTranslation();
+  const styles = useStyles();
+
+  return (
+    <>
+      {isInitialLoading || hasError ? (
+        <Spinner />
+      ) : (
+        <>
+          {userLockedDeposits.length === 0 ? (
+            <Typography>
+              {t('withdrawFromVestingVaultModalModal.withdrawalRequestList.emptyState')}
+            </Typography>
+          ) : (
+            <>
+              {userLockedDeposits.map(userLockedDeposit => (
+                <LabeledInlineContent
+                  css={styles.listItem}
+                  iconSrc={TOKENS.strata}
+                  data-testid={TEST_IDS.withdrawalRequestListItem}
+                  key={`withdrawal-request-list-item-${userLockedDeposit.unlockedAt.getTime()}`}
+                  invertTextColors
+                  label={convertWeiToTokens({
+                    valueWei: userLockedDeposit.amountWei,
+                    token: TOKENS.strata,
+                    returnInReadableFormat: true,
+                  })}
+                >
+                  {t('withdrawFromVestingVaultModalModal.withdrawalRequestList.itemContent', {
+                    date: userLockedDeposit.unlockedAt,
+                  })}
+                </LabeledInlineContent>
+              ))}
+            </>
+          )}
+        </>
+      )}
+    </>
+  );
+};
+
+export interface WithdrawalRequestListProps {
+  poolIndex: number;
+}
+
+const WithdrawalRequestList: React.FC<WithdrawalRequestListProps> = ({ poolIndex }) => {
+  const { accountAddress } = useAuth();
+  const { t } = useTranslation();
+
+  const {
+    data: userLockedDepositsData = {
+      lockedDeposits: [],
+    },
+    isLoading: isGetStrataVaultUserLockedDepositsLoading,
+    error: getStrataVaultUserLockedDepositsError,
+  } = useGetStrataVaultLockedDeposits(
+    {
+      poolIndex,
+      rewardTokenAddress: TOKENS.strata.address,
+      accountAddress: accountAddress || '',
+    },
+    {
+      placeholderData: {
+        lockedDeposits: [],
+      },
+      enabled: !!accountAddress,
+    },
+  );
+
+  return (
+    <ConnectWallet
+      message={t(
+        'withdrawFromVestingVaultModalModal.withdrawalRequestList.approveToken.connectWalletMessage',
+      )}
+    >
+      <WithdrawalRequestListUi
+        isInitialLoading={isGetStrataVaultUserLockedDepositsLoading}
+        userLockedDeposits={userLockedDepositsData.lockedDeposits}
+        hasError={!!getStrataVaultUserLockedDepositsError}
+      />
+    </ConnectWallet>
+  );
+};
+
+export default WithdrawalRequestList;

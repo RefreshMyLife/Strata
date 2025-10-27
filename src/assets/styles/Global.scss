@@ -1,0 +1,147 @@
+// @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap');
+
+:root {
+    /* Common styles */
+    --color-black: #020412;
+    --color-blue: #4480e9;
+    --color-lavender: rgb(234, 236, 255);
+    --color-primary: #4480e9;
+    --color-stroke-primary: #2f60b5;
+    --color-stroke-secondary: #27354c;
+
+    /* Background colors */
+    --color-bg-main: rgb(15, 18, 23);
+    --color-bg-primary: rgba(22, 27, 39, 1);
+    --color-bg-active: rgba(32, 39, 56, 1);
+
+    /* Typography colors */
+    --color-text-main: #fff;
+    //--color-text-secondary: rgba(169, 171, 199, 1); //#2a2a2f;
+    --color-text-secondary: #8ea2b0; //rgba(0, 0, 0, .6);
+    --color-text-hint: #414a5a;
+    --color-text-inactive: rgba(161, 161, 161, 1);
+    --color-text-red: rgba(233, 61, 102, 1);
+    --color-yellow: #feee48;
+
+    --color-stroke-blue: rgb(51, 177, 255);
+    --color-stroke-blue-raw: 51, 177, 255;
+    --color-bg-modal: rgba(12, 19, 26, 0.8);
+
+    --color-test: #98a2b3;
+}
+
+html {
+    min-height: 100%;
+    font-size: 14px;
+}
+
+body {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    background: linear-gradient(
+        180deg,
+        #0c1215 0%,
+        #111b26 10%,
+        #0a0f15 15%,
+        #000000 20%,
+        #000000 100%
+    ) !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+    background-color: #000000 !important;
+    color: var(--color-text-main);
+    min-height: 100vh;
+}
+
+body[page='account'],
+body[page='legal'] {
+    //background: url('../img/about-header.png') center top no-repeat;
+    //background-size: 100% 20%;
+    background: #101214;
+    //background-blend-mode: lighten;
+    &:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.2;
+        background-image: url('../img/about-header.png');
+        background-repeat: no-repeat;
+        background-size: 100% 20%;
+        background-position-y: 50px;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    main.MuiBox-root {
+        padding-left: 34px;
+        padding-right: 34px;
+        border-top: 1px solid rgba(161, 189, 217, 0.08);
+        max-width: 100%;
+    }
+}
+
+a,
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 0;
+}
+
+i {
+    font-style: normal;
+}
+
+a {
+    color: #329cde;
+}
+
+.hint {
+    color: var(--color-text-hint);
+    font-size: 14px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family:
+        Chakra Petch,
+        sans-serif;
+}
+
+.MuiPaper-root {
+    border: 1px solid rgba(25, 29, 32, 1);
+    border-top-color: rgba(35, 39, 42, 1);
+}
+
+.spinner_color_warning {
+    color: rgb(255, 119, 16);
+}
+
+.spinner_color_warning path {
+    stroke: currentColor;
+}
+
+wcm-modal {
+    z-index: 9999999;
+    position: relative;
+}
+
+svg {
+    overflow: visible !important;
+}

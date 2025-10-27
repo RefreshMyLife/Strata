@@ -1,0 +1,24 @@
+import * as React from 'react';
+import { SVGProps } from 'react';
+
+const SvgLogoMobile = (props: SVGProps<SVGSVGElement>) => {
+    const { id = 'logoMobile' } = props;
+    const gradientId = `gradient_${id}`;
+    return (
+        <svg fill="none" xmlns="http://www.w3.org/2000/svg" {...props} viewBox="0 0 33.45 33.45">
+
+            <defs>
+                <radialGradient id="gradient_logoMobile" cx="-483.95" cy="1332.58" fx="-483.95" fy="1332.58" r=".15" gradientTransform="translate(-214253.4 110554.95) rotate(90) scale(228.43 -160.79)" gradientUnits="userSpaceOnUse">
+                    <stop offset=".03" stopColor="#252424"/>
+                    <stop offset="1" stopColor="#1c1c1c"/>
+                </radialGradient>
+            </defs>
+            <path d="m16.72,0h0C7.49,0,0,7.49,0,16.72h0c0,9.24,7.49,16.72,16.72,16.72h0c9.24,0,16.72-7.49,16.72-16.72h0C33.45,7.49,25.96,0,16.72,0Z" fill="#fff" strokeWidth="0"/>
+            <path d="m16.72.54h0C7.78.54.54,7.78.54,16.72h0c0,8.94,7.25,16.19,16.19,16.19h0c8.94,0,16.19-7.25,16.19-16.19h0C32.91,7.78,25.67.54,16.72.54Z" fill="url(#gradient_logoMobile)" strokeWidth="0"/>
+            <path d="m18.23,16.16l3.98-1.93v8.84s-10.97,5.14-10.97,5.14v-4.8l6.99-3.15v-4.1Z" fill="#fff" strokeWidth="0"/>
+            <path d="m15.22,17.48l-3.98,1.79v-8.87l10.97-5.11v4.8l-6.99,3.4v3.99Z" fill="#fff" strokeWidth="0"/>
+        </svg>
+    );
+};
+
+export default SvgLogoMobile;

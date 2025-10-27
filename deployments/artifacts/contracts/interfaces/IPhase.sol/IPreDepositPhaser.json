@@ -1,0 +1,24 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IPreDepositPhaser",
+  "sourceName": "contracts/interfaces/IPhase.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "currentPhase",
+      "outputs": [
+        {
+          "internalType": "enum PreDepositPhase",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

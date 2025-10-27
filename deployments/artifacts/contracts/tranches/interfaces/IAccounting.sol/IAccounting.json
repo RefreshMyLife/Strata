@@ -1,0 +1,188 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IAccounting",
+  "sourceName": "contracts/tranches/interfaces/IAccounting.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getCDOAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bool",
+          "name": "isJrt",
+          "type": "bool"
+        }
+      ],
+      "name": "maxDeposit",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bool",
+          "name": "isJrt",
+          "type": "bool"
+        }
+      ],
+      "name": "maxWithdraw",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "onAprChanged",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "reduceReserve",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "navT1",
+          "type": "uint256"
+        }
+      ],
+      "name": "totalAssets",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "jrtNavT1",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "srtNavT1",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "reserveNavT1",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalAssetsT0",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "jrtNavT0",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "srtNavT0",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "reserveNavT0",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalReserve",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "navT1",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateAccounting",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "jrtAssetsIn",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "jrtAssetsOut",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "srtAssetsIn",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "srtAssetsOut",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateBalanceFlow",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

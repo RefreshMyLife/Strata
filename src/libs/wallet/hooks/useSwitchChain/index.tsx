@@ -1,0 +1,32 @@
+import { useCallback } from 'react';
+import { useSwitchChain as useWagmiSwitchChain } from 'wagmi';
+
+//import { VError, handleError } from 'libs/errors';
+import { useUpdateUrlChainId } from 'libs/wallet/hooks/useUpdateUrlChainId';
+import { ChainId } from 'src/packages/contracts';
+
+
+export const useSwitchChain = () => {
+  const { switchChainAsync } = useWagmiSwitchChain();
+  const { updateUrlChainId } = useUpdateUrlChainId();
+
+  const switchChain = useCallback(
+    async (input: { chainId: ChainId; callback?: () => void }) => {
+      try {
+        await switchChainAsync(input);
+
+        // Update URL
+        updateUrlChainId(input);
+
+        input.callback?.();
+      } catch (error) {
+        // if (error instanceof VError && error.code === 'couldNotSwitchChain') {
+        //   handleError({ error });
+        // }
+      }
+    },
+    [updateUrlChainId, switchChainAsync],
+  );
+
+  return { switchChain };
+};

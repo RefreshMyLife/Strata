@@ -1,0 +1,37 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "PreDepositPhaser",
+  "sourceName": "contracts/predeposit/PreDepositPhaser.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "enum PreDepositPhase",
+          "name": "phase",
+          "type": "uint8"
+        }
+      ],
+      "name": "PhaseStarted",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "currentPhase",
+      "outputs": [
+        {
+          "internalType": "enum PreDepositPhase",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
