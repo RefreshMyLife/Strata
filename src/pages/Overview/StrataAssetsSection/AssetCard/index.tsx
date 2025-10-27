@@ -128,7 +128,10 @@ const AssetCard: React.FC<AssetCardProps> = ({
                     <div css={styles.metric}>
                         <Typography variant="caption" css={styles.metricLabel}>
                             <span>Coverage</span>
-                            <TooltipIcon title="Over-collateralization with an additional coverage provided by the junior tranche (7-day average)" />
+                            <TooltipIcon
+                                mobileTitle={'Coverage'}
+                                title="Over-collateralization with an additional coverage provided by the junior tranche (7-day average)"
+                            />
                         </Typography>
                         <Typography variant="body1" css={styles.metricValue}>
                             {isLoadingPerf ? <SvgLoadingInlined /> : coverage}
@@ -140,6 +143,7 @@ const AssetCard: React.FC<AssetCardProps> = ({
                         <Typography variant="caption" css={styles.metricLabel}>
                             Overperformance
                             <TooltipIcon
+                                mobileTitle={'Overperformance'}
                                 title={
                                     <span>
                                         Leveraged exposure to sUSDe APY <br />

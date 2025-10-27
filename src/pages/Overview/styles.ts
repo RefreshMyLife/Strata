@@ -18,7 +18,7 @@ export const useStyles = () => {
             }
 
             ${theme.breakpoints.down('md')} {
-                padding: 10px 0 0 10px;
+                padding: 10px 10px;
             }
         `,
     };

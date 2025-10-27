@@ -34,8 +34,10 @@ export const Tooltip = ({
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [open, setOpen] = useState(false);
 
-    const handleOpen = () => {
+    const handleOpen = (e: React.MouseEvent | React.TouchEvent) => {
         if (isMobile) {
+            e.preventDefault();
+            e.stopPropagation();
             setOpen(true);
         }
     };
@@ -48,7 +50,7 @@ export const Tooltip = ({
         return (
             <>
                 <Global styles={styles} />
-                <span onClick={handleOpen} onTouchStart={handleOpen}>
+                <span onClick={handleOpen} style={{ cursor: 'pointer', display: 'inline-flex' }}>
                     {children}
                 </span>
                 <Dialog

@@ -33,9 +33,15 @@ export const useStyles = () => {
                 padding: 20px;
                 width: ${isConnected ? '100%' : '100%'};
                 max-width: ${isConnected ? '100%' : '1304px'};
+                gap:10px
+
             }
         `,
-
+        conntectBtn: css`
+          ${theme.breakpoints.down('sm')} {
+              width:100% !important;
+            }
+        `,
         iconContainer: css`
             display: flex;
             justify-content: center;

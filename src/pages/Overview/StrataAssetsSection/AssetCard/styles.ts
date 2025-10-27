@@ -90,6 +90,12 @@ export const useStyles = () => {
             align-items: center;
             gap: 8px;
             flex-wrap: wrap;
+            ${theme.breakpoints.down('sm')} {
+                width:100%;
+                padding: 10px;
+                justify-content: flex-end;
+            }
+            
         `,
 
         riskChip: css`

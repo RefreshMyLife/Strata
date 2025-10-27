@@ -1,13 +1,14 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState } from 'react';
 import { Typography } from '@mui/material';
-
 import { Button } from 'components';
-import { useAuth } from 'context/AuthContext';
-import { useStyles } from './styles';
+import React, { useState } from 'react';
+
 import ReferralIcon from 'assets/img/referral_icon.svg';
+import { useAuth } from 'context/AuthContext';
 import ConnectButton from 'src/components/Layout2/ConnectButton';
 import { InviteFriendDialog } from 'src/pages/Points2/PointsWalletConnected/InviteFriendDialog';
+
+import { useStyles } from './styles';
 
 const ReferralSection: React.FC = () => {
     const styles = useStyles();
@@ -34,7 +35,11 @@ const ReferralSection: React.FC = () => {
                     </Typography>
                 </div>
 
-                <Button variant="secondary" css={styles.inviteButton(true)} onClick={handleInviteFriend}>
+                <Button
+                    variant="secondary"
+                    css={styles.inviteButton(true)}
+                    onClick={handleInviteFriend}
+                >
                     Share Link
                 </Button>
                 <InviteFriendDialog
@@ -56,7 +61,7 @@ const ReferralSection: React.FC = () => {
                 </Typography>
             </div>
 
-            <ConnectButton />
+            <ConnectButton css={styles.conntectBtn} />
         </div>
     );
 };
