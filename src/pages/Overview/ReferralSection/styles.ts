@@ -82,7 +82,7 @@ export const useStyles = () => {
         `,
 
         inviteButton: (isConnected: boolean) => css`
-            width: ${isConnected ? '373.33px' : ''};
+            width: ${isConnected ? '100%' : ''};
             height: ${isConnected ? '50px' : '40px'};
             padding: ${isConnected ? '14px 24px' : '10px 12px'};
             gap: ${isConnected ? '8px' : '4px'};

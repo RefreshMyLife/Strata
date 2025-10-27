@@ -34,16 +34,8 @@ export const useStyles = () => {
             max-width: 1304px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(410px, 1fr));
-            gap: ${theme.spacing(4)};
-
-            ${theme.breakpoints.down('xl')} {
-                gap: ${theme.spacing(3)};
-            }
-
-            ${theme.breakpoints.down('lg')} {
-                gap: ${theme.spacing(2.5)};
-            }
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+           gap: 20px;
 
             ${theme.breakpoints.between('md', 'xl')} {
                 grid-template-columns: 1fr 1fr; 
@@ -65,7 +57,7 @@ export const useStyles = () => {
 
             ${theme.breakpoints.down('md')} {
                 grid-template-columns: 1fr;
-                gap: ${theme.spacing(2)};
+                gap: 20px;
             }
 
             ${theme.breakpoints.down('sm')} {
@@ -73,7 +65,7 @@ export const useStyles = () => {
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: 16px;
+               
             }
             `
 

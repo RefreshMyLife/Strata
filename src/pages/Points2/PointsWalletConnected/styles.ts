@@ -109,6 +109,12 @@ export const useStyles = () => {
                 justify-content: space-between;
                 
             }
+                
+            ${theme.breakpoints.down('sm')} {
+                flex-direction: column;
+                align-items: flex-start;
+                
+            }
         `,
 
         season2StatsCard: css`
@@ -131,6 +137,11 @@ export const useStyles = () => {
                 flex-direction: row;
                 align-items: flex-end;
                 justify-content: space-between;
+            }
+            ${theme.breakpoints.down('lg')} {
+                flex-direction: column;
+                align-items: flex-start;
+               
             }
         `,
 

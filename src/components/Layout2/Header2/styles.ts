@@ -28,7 +28,7 @@ export const useStyles = () => {
         padding-bottom: 5px;
       }
 
-      @media (max-width: 960px) {
+      @media (max-width: 970px) {
         display: none;
       }
     `,

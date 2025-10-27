@@ -18,7 +18,7 @@ export const useStyles = () => {
       display: none;
     
 
-      @media (max-width: 960px) {
+      @media (max-width: 970px) {
         display: block;
       }
     `,

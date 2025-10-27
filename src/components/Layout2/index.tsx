@@ -19,7 +19,7 @@ export const Layout2: React.FC = ({ children }) => {
                 display="flex"
                 flexDirection="column"
                 flex="1"
-                sx={{ minWidth: 0, overflow: 'auto' }}
+                sx={{ minWidth: 0, overflow: 'auto', overflowX: 'hidden' }}
             >
                 <Header2 />
 

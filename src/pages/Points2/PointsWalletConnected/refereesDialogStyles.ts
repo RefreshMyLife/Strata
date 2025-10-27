@@ -62,7 +62,7 @@ export const useRefereesStyles = () => ({
     `,
     tableContainer: css`
         width: 100%;
-
+        overflow: hidden;
         @media(max-width:600px){
            overflow-y: auto;
            flex: 1;
@@ -124,11 +124,7 @@ export const useRefereesStyles = () => ({
         color: rgba(255, 255, 255, 1);
     `,
 
-    tableContainer: css`
-        width: 100%;
-        overflow: hidden;
-    `,
-
+   
     tableHeader: css`
         display: grid;
         grid-template-columns: 1fr 120px;

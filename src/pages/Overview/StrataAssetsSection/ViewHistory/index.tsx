@@ -81,39 +81,42 @@ const HistoryUi = () => {
     }, [history]);
 
     // Mock data for testing
-    // const mockGroups = [
-    //     {
-    //         title: 'December 2024',
-    //         items: [
-    //             {
-    //                 event: 'Buy',
-    //                 token: { symbol: 'srUSDe', address: '0x123' },
-    //                 timestamp: new Date('2024-12-15'),
-    //                 transactionHash: '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef',
-    //                 amountWei: '2500000000000000000000',
-    //             },
-    //             {
-    //                 event: 'Sell',
-    //                 token: { symbol: 'jrUSDe', address: '0x456' },
-    //                 timestamp: new Date('2024-12-10'),
-    //                 transactionHash: '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
-    //                 amountWei: '1500000000000000000000',
-    //             },
-    //         ],
-    //     },
-    //     {
-    //         title: 'November 2024',
-    //         items: [
-    //             {
-    //                 event: 'Buy',
-    //                 token: { symbol: 'srUSDe', address: '0x123' },
-    //                 timestamp: new Date('2024-11-25'),
-    //                 transactionHash: '0x7890abcdef1234567890abcdef1234567890abcdef1234567890abcdef123456',
-    //                 amountWei: '5000000000000000000000',
-    //             },
-    //         ],
-    //     },
-    // ];
+    const mockGroups = [
+        {
+            title: 'December 2024',
+            items: [
+                {
+                    event: 'Buy',
+                    token: { symbol: 'srUSDe', address: '0x123' },
+                    timestamp: new Date('2024-12-15'),
+                    transactionHash:
+                        '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef',
+                    amountWei: '2500000000000000000000',
+                },
+                {
+                    event: 'Sell',
+                    token: { symbol: 'jrUSDe', address: '0x456' },
+                    timestamp: new Date('2024-12-10'),
+                    transactionHash:
+                        '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
+                    amountWei: '1500000000000000000000',
+                },
+            ],
+        },
+        {
+            title: 'November 2024',
+            items: [
+                {
+                    event: 'Buy',
+                    token: { symbol: 'srUSDe', address: '0x123' },
+                    timestamp: new Date('2024-11-25'),
+                    transactionHash:
+                        '0x7890abcdef1234567890abcdef1234567890abcdef1234567890abcdef123456',
+                    amountWei: '5000000000000000000000',
+                },
+            ],
+        },
+    ];
 
     return (
         <div css={styles.container}>
@@ -129,9 +132,9 @@ const HistoryUi = () => {
                         <HistoryGroup key={index} group={group} items={group.items} />
                     ))}
                 {/* Show mock data for testing */}
-                {/* {mockGroups.map((group, index) => (
+                {mockGroups.map((group, index) => (
                     <HistoryGroup key={`mock-${index}`} group={group} items={group.items} />
-                ))} */}
+                ))}
             </div>
         </div>
     );

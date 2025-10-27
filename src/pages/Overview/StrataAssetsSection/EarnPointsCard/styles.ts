@@ -93,7 +93,7 @@ export const useStyles = () => {
         `,
 
         description: css`
-            width: 373.33px;
+            width: 100%;
             font-family: 'Chakra Petch', sans-serif;
             font-weight: 400;
             font-size: 16px;
@@ -108,7 +108,7 @@ export const useStyles = () => {
         `,
 
         button: css`
-            width: 373.33px;
+            width:100%;
             height: 48px;
             opacity: 0.8;
             background: linear-gradient(90deg, #27eefc 0%, #5d28fb 100%);
