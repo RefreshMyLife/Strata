@@ -1,19 +1,96 @@
 import { Global } from '@emotion/react';
+import {
+    Box,
+    Button,
+    Dialog,
+    DialogContent,
+    IconButton,
+    Typography,
+    useMediaQuery,
+    useTheme,
+} from '@mui/material';
 import MuiTooltip, { TooltipProps as MUITooltipProps } from '@mui/material/Tooltip';
-import React from 'react';
+import React, { useState } from 'react';
 
-import { useStyles } from './styles';
+import { ReactComponent as CloseIcon } from 'src/assets/img/icons/close.svg';
+
+import { useDialogStyles, useStyles } from './styles';
 
 export interface TooltipProps extends MUITooltipProps {
     title: string | React.ReactElement;
+    mobileTitle?: string | React.ReactElement;
 }
 
-export const Tooltip = ({ children, placement = 'top', ...rest }: TooltipProps) => {
+export const Tooltip = ({
+    children,
+    placement = 'top',
+    title,
+    mobileTitle,
+    ...rest
+}: TooltipProps) => {
     const styles = useStyles();
+    const dialogStyles = useDialogStyles();
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+        if (isMobile) {
+            setOpen(true);
+        }
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    if (isMobile) {
+        return (
+            <>
+                <Global styles={styles} />
+                <span onClick={handleOpen} onTouchStart={handleOpen}>
+                    {children}
+                </span>
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    fullWidth
+                    BackdropProps={{
+                        sx: dialogStyles.backdrop,
+                    }}
+                    PaperProps={{
+                        sx: dialogStyles.paper,
+                    }}
+                >
+                    <Box sx={dialogStyles.container}>
+                        <IconButton onClick={handleClose} sx={dialogStyles.closeButton}>
+                            <CloseIcon />
+                        </IconButton>
+
+                        {mobileTitle && (
+                            <Typography sx={dialogStyles.mobileTitle}>{mobileTitle}</Typography>
+                        )}
+
+                        <DialogContent sx={dialogStyles.content}>{title}</DialogContent>
+
+                        <Button
+                            onClick={handleClose}
+                            fullWidth
+                            variant="contained"
+                            sx={dialogStyles.button}
+                        >
+                            Got it
+                        </Button>
+                    </Box>
+                </Dialog>
+            </>
+        );
+    }
+
     return (
         <>
             <Global styles={styles} />
-            <MuiTooltip arrow placement={placement} enterTouchDelay={0} {...rest}>
+            <MuiTooltip arrow placement={placement} enterTouchDelay={0} title={title} {...rest}>
                 <span>{children}</span>
             </MuiTooltip>
         </>
@@ -24,7 +101,7 @@ export const TooltipIcon = (props: Omit<TooltipProps, 'children'>) => {
     return (
         <Tooltip {...props}>
             <svg
-                style={{ width: '.9em', height: '.9em', marginLeft: '.2em' }}
+                style={{ width: '.9em', height: '.9em', marginLeft: '.2em', cursor: 'pointer' }}
                 viewBox="0 0 14 14"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
