@@ -19,6 +19,7 @@ export const useStyles = () => {
         background: #444;
          @media(max-width: 600px){
           width: 100% !important;
+           padding: ${theme.spacing(0)};
         }
       }
       .MuiTooltip-arrow {
@@ -42,9 +43,11 @@ export const useDialogStyles = () => {
       borderRadius: '16px 16px 0 0',
       backgroundColor: theme.palette.background.paper || '#1a1a1a',
       maxWidth: '100% !important',
+      padding: '24px 16px',
     },
     backdrop: {
-      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    
+     backdropFilter: 'blur(5px)',
     },
     container: {
       position: 'relative',
@@ -53,7 +56,7 @@ export const useDialogStyles = () => {
     closeButton: {
       position: 'absolute',
       right: 8,
-      top: 8,
+      top: 4,
       color: theme.palette.text.disabled || '#666',
     },
     mobileTitle: {
@@ -70,17 +73,18 @@ export const useDialogStyles = () => {
       lineHeight: 1.6,
     },
     button: {
-      marginTop: theme.spacing(2),
+      marginTop: theme.spacing(6),
       backgroundColor: '#2a2a2a',
       color: '#fff',
       textTransform: 'none',
-      padding: '12px',
+      padding: '10px',
       borderRadius: '8px',
       fontSize: '16px',
       fontWeight: 500,
       '&:hover': {
         backgroundColor: '#3a3a3a',
       },
+
     },
   };
 };

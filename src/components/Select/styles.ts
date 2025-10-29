@@ -10,7 +10,7 @@ export const useStyles = () => {
 
     return {
         backdrop: css`
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -19,22 +19,15 @@ export const useStyles = () => {
             background-color: rgba(0, 0, 0, 0.3);
             z-index: 999;
             cursor: pointer;
-
-            ${theme.breakpoints.down('sm')} {
-                position: fixed;
-                z-index: 9999;
-                background-color: rgba(0, 0, 0, 0.8);
-                backdrop-filter: blur(8px);
-            }
         `,
         dialog: css`
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
             width: 100%;
             max-width: 520px;
-            max-height: fit-content;
+            max-height: 80vh;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -50,32 +43,42 @@ export const useStyles = () => {
             border-radius: 17px;
             z-index: 1000;
 
-            animation: slideUpFromBottom 0.2s ease-out forwards;
+            animation: fadeIn 0.2s ease-out forwards;
 
-            @keyframes slideUpFromBottom {
+            @keyframes fadeIn {
                 from {
-                    transform: translateY(10%);
                     opacity: 0;
+                    transform: translate(-50%, -50%) scale(0.95);
                 }
                 to {
-                    transform: translateY(0);
                     opacity: 1;
+                    transform: translate(-50%, -50%) scale(1);
                 }
             }
 
             ${theme.breakpoints.down('sm')} {
-                position: fixed;
+                position: absolute;
                 left: 0;
                 right: 0;
                 bottom: 0;
-                max-width: 100%;
-                height: 60vh;
-                max-height: 60vh;
+                top: auto;
+                transform: none;
+                max-height: fit-content;
                 border-bottom-left-radius: 0;
                 border-bottom-right-radius: 0;
-                z-index: 10000;
-                padding-left: 40px;
-                padding-right: 40px;
+
+                animation: slideUpFromBottom 0.2s ease-out forwards;
+
+                @keyframes slideUpFromBottom {
+                    from {
+                        transform: translateY(10%);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
             }
         `,
         dialogHeading: css`

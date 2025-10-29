@@ -249,9 +249,8 @@ export const useStyles = () => {
             }
         `,
         arrowIcon: css`
-            width: 28px;
-            height: 28px;
-            padding: 4px;
+            width: 40px;
+            height: 40px;
             background: rgba(41, 41, 42, 0.8);
             border: 1px solid rgba(41, 41, 42, 0.9);
             border-radius: 6px;

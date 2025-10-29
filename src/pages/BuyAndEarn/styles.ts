@@ -13,7 +13,7 @@ export const useStyles = () => {
             gap: 10px;
 
             background: rgba(4, 8, 10, 1);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid #202B32;
             border-radius: 20px;
             box-shadow: 0px 0px 10px 0px rgba(32, 175, 253, 0.1) inset;
 
@@ -32,10 +32,7 @@ export const useStyles = () => {
                 max-width: 100%;
                 margin: 0;
                 padding: 16px;
-                border-radius: 0;
-                border-left: none;
-                border-right: none;
-            
+
                 gap: 8px;
             }
         `,

@@ -8,6 +8,9 @@ import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
 import { useTranslation } from 'translation';
 
+import { ReactComponent as LogoNoText } from 'assets/img/StrataLogoPureV2.svg';
+import { ReactComponent as LogoDesktop } from 'assets/img/StrataLogoWithTextV2.svg';
+
 import { Icon } from '../../Icon';
 import ConnectButton from '../ConnectButton';
 import { Toolbar } from '../Toolbar';
@@ -38,8 +41,8 @@ export const SidebarUi: React.FC = () => {
             {/* Mobile menu */}
             <div css={styles.mobileMenuBox}>
                 <div css={styles.flexRow}>
-                    <Icon name="logoMobile" css={styles.mobileLogo} onClick={onLogoClicked} />
-
+                    <LogoDesktop css={styles.mobileLogo} onClick={onLogoClicked} />
+                    {/* <LogoNoText onClick={onLogoClicked} /> */}
                     <div
                         style={{
                             width: '100%',
@@ -49,7 +52,11 @@ export const SidebarUi: React.FC = () => {
                             paddingRight: '8px',
                         }}
                     >
-                        <ConnectButton fullWidth css={styles.mobileConnectButton} text="Wallet" />
+                        <ConnectButton
+                            fullWidth
+                            css={styles.mobileConnectButton}
+                            text="Connect Wallet"
+                        />
                     </div>
                     {/* <SelectChainButton cssButton={styles.mobileSelectChainButton} iconOnly={true} /> */}
 

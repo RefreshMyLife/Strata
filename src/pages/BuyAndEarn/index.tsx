@@ -1,12 +1,22 @@
 /** @jsxImportSource @emotion/react */
 import { Box } from '@mui/material';
-import { AnchorButton, Icon, Spinner, Tabs, TextButton, TokenIcon, TransactionStatusModal, TransactionStep, SelectDialogV2 } from 'components';
+import {
+    AnchorButton,
+    Icon,
+    SelectDialogV2,
+    Spinner,
+    Tabs,
+    TextButton,
+    TokenIcon,
+    TransactionStatusModal,
+    TransactionStep,
+} from 'components';
 import React, { useState } from 'react';
 import { useAuthModal } from 'src/libs/wallet';
 import { ChainId, changeChainId } from 'src/packages/contracts';
 
-import img_settings from 'assets/img/icons/settings.svg';
 import img_settings_white from 'assets/img/icons/settings-white.svg';
+import img_settings from 'assets/img/icons/settings.svg';
 import { useGetPreDeposits } from 'clients/api';
 import { SettingsDrawer } from 'components/SettingsDrawer';
 import { useAuth } from 'context/AuthContext';
@@ -25,7 +35,12 @@ export interface PreDepositUiProps {
 const BuyTab = ({ preDeposit, transactionModalProps, tokenSelectModalProps }) => {
     return (
         <>
-            <BuyPanel preDeposit={preDeposit} transactionModalProps={transactionModalProps} tokenSelectModalProps={tokenSelectModalProps} key="buy" />
+            <BuyPanel
+                preDeposit={preDeposit}
+                transactionModalProps={transactionModalProps}
+                tokenSelectModalProps={tokenSelectModalProps}
+                key="buy"
+            />
         </>
     );
 };
@@ -33,7 +48,11 @@ const BuyTab = ({ preDeposit, transactionModalProps, tokenSelectModalProps }) =>
 const SellTab = ({ preDeposit, tokenSelectModalProps }) => {
     return (
         <>
-            <SellForm preDeposit={preDeposit} tokenSelectModalProps={tokenSelectModalProps} key="sell" />
+            <SellForm
+                preDeposit={preDeposit}
+                tokenSelectModalProps={tokenSelectModalProps}
+                key="sell"
+            />
         </>
     );
 };
@@ -54,7 +73,7 @@ const BuyAndEarnUi: React.FC = () => {
     const [showTransactionModal, setShowTransactionModal] = useState(false);
     const [transactionSteps, setTransactionSteps] = useState<TransactionStep[]>([
         { title: 'Token Approval', status: 'pending' },
-        { title: 'Transaction Execution', status: 'pending' }
+        { title: 'Transaction Execution', status: 'pending' },
     ]);
 
     // Token Selection Modal states
@@ -82,7 +101,7 @@ const BuyAndEarnUi: React.FC = () => {
         showTransactionModal,
         setShowTransactionModal,
         transactionSteps,
-        setTransactionSteps
+        setTransactionSteps,
     };
 
     // Token select modal props
@@ -90,7 +109,7 @@ const BuyAndEarnUi: React.FC = () => {
         showTokenSelectModal,
         setShowTokenSelectModal,
         tokenSelectData,
-        setTokenSelectData
+        setTokenSelectData,
     };
 
     const tabsContent = [
@@ -101,7 +120,13 @@ const BuyAndEarnUi: React.FC = () => {
                     <span className="text-icon">+</span>Buy
                 </>
             ),
-            content: <BuyTab preDeposit={preDeposit} transactionModalProps={transactionModalProps} tokenSelectModalProps={tokenSelectModalProps} />,
+            content: (
+                <BuyTab
+                    preDeposit={preDeposit}
+                    transactionModalProps={transactionModalProps}
+                    tokenSelectModalProps={tokenSelectModalProps}
+                />
+            ),
         },
         {
             key: 'sell',
@@ -110,7 +135,9 @@ const BuyAndEarnUi: React.FC = () => {
                     <span className="text-icon">-</span>Sell
                 </>
             ),
-            content: <SellTab preDeposit={preDeposit} tokenSelectModalProps={tokenSelectModalProps} />,
+            content: (
+                <SellTab preDeposit={preDeposit} tokenSelectModalProps={tokenSelectModalProps} />
+            ),
         },
     ];
 

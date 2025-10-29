@@ -10,81 +10,85 @@ import { TokenTextField, TokenTextFieldProps } from '../TokenTextField';
 import TokenList from './TokenList';
 import { useStyles } from './styles';
 import {
-  getTokenMaxButtonTestId,
-  getTokenSelectButtonTestId,
-  getTokenTextFieldTestId,
+    getTokenMaxButtonTestId,
+    getTokenSelectButtonTestId,
+    getTokenTextFieldTestId,
 } from './testIdGetters';
 
 export interface SelectTokenTextFieldProps extends Omit<TokenTextFieldProps, 'max' | 'token'> {
-  selectedToken: Token;
-  tokenBalances: TokenBalance[];
-  onChangeSelectedToken: (token: Token) => void;
-  'data-testid'?: string;
+    selectedToken: Token;
+    tokenBalances: TokenBalance[];
+    onChangeSelectedToken: (token: Token) => void;
+    'data-testid'?: string;
 }
 
 export const SelectTokenTextField: React.FC<SelectTokenTextFieldProps> = ({
-  selectedToken,
-  disabled,
-  tokenBalances,
-  onChange,
-  onChangeSelectedToken,
-  className,
-  value,
-  rightMaxButton,
-  'data-testid': testId,
-  description,
-  ...otherTokenTextFieldProps
+    selectedToken,
+    disabled,
+    tokenBalances,
+    onChange,
+    onChangeSelectedToken,
+    className,
+    value,
+    rightMaxButton,
+    'data-testid': testId,
+    description,
+    ...otherTokenTextFieldProps
 }) => {
-  const styles = useStyles();
-  const [isTokenListShown, setIsTokenListShown] = useState(false);
+    const styles = useStyles();
+    const [isTokenListShown, setIsTokenListShown] = useState(false);
 
-  const handleButtonClick = () => setIsTokenListShown(isShowing => !isShowing);
+    const handleButtonClick = () => setIsTokenListShown(isShowing => !isShowing);
 
-  const handleChangeSelectedToken = (newSelectedToken: Token) => {
-    setIsTokenListShown(false);
-    onChangeSelectedToken(newSelectedToken);
-  };
+    const handleChangeSelectedToken = (newSelectedToken: Token) => {
+        setIsTokenListShown(false);
+        onChangeSelectedToken(newSelectedToken);
+    };
 
-  console.log(`Render <SelectTokenTextField/>`);
-  onChange = () => {};
-  return (
-    <div className={className} data-testid={testId}>
-      <TokenTextField
-        token={selectedToken}
-        disabled={disabled}
-        displayTokenIcon={false}
-        value={'1'}
-        onChange={onChange}
-        rightAdornment={
-          <>
-            <TertiaryButton
-              onClick={handleButtonClick}
-              css={styles.getButton({ isTokenListShown })}
-              disabled={disabled}
-              data-testid={!!testId && getTokenSelectButtonTestId({ parentTestId: testId })}
-            >
-              <TokenIconWithSymbol token={selectedToken} css={styles.token} />
-
-              <Icon css={styles.getArrowIcon({ isTokenListShown })} name="arrowUp" />
-            </TertiaryButton>
-
-            {rightMaxButton && (
-              <TertiaryButton
+    console.log(`Render <SelectTokenTextField/>`);
+    onChange = () => {};
+    return (
+        <div className={className} data-testid={testId}>
+            <TokenTextField
+                token={selectedToken}
                 disabled={disabled}
-                css={styles.maxButton}
-                data-testid={!!testId && getTokenMaxButtonTestId({ parentTestId: testId })}
-                {...rightMaxButton}
-              >
-                {rightMaxButton.label}
-              </TertiaryButton>
-            )}
-          </>
-        }
-        data-testid={!!testId && getTokenTextFieldTestId({ parentTestId: testId })}
-        {...otherTokenTextFieldProps}
-      />
+                displayTokenIcon={false}
+                value={'1'}
+                onChange={onChange}
+                rightAdornment={
+                    <>
+                        <TertiaryButton
+                            onClick={handleButtonClick}
+                            css={styles.getButton({ isTokenListShown })}
+                            disabled={disabled}
+                            data-testid={
+                                !!testId && getTokenSelectButtonTestId({ parentTestId: testId })
+                            }
+                        >
+                            <TokenIconWithSymbol token={selectedToken} css={styles.token} />
+                            <Icon css={styles.getArrowIcon({ isTokenListShown })} name="arrowUp" />
+                            asdasd
+                        </TertiaryButton>
 
-      {/* <div css={styles.tokenListContainer}>
+                        {rightMaxButton && (
+                            <TertiaryButton
+                                disabled={disabled}
+                                css={styles.maxButton}
+                                data-testid={
+                                    !!testId && getTokenMaxButtonTestId({ parentTestId: testId })
+                                }
+                                {...rightMaxButton}
+                            >
+                                {rightMaxButton.label}
+                            </TertiaryButton>
+                        )}
+                    </>
+                }
+                data-testid={!!testId && getTokenTextFieldTestId({ parentTestId: testId })}
+                {...otherTokenTextFieldProps}
+            />
+
+            {/* <div css={styles.tokenListContainer}>
         {isTokenListShown && (
           <TokenList
             tokenBalances={tokenBalances}
@@ -102,6 +106,6 @@ export const SelectTokenTextField: React.FC<SelectTokenTextFieldProps> = ({
         css={styles.getBackdrop({ isTokenListShown })}
         onClick={() => setIsTokenListShown(false)}
       /> */}
-    </div>
-  );
+        </div>
+    );
 };

@@ -9,25 +9,32 @@ export const useStyles = () => {
             flex: 1;
             min-height: 394px;
             border-radius: 20px;
-            padding: 24px;
-            gap: 24px;
+            padding: 24px 24px 0 24px ;
             background: rgba(4, 8, 10, 1);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0px 0px 10px 0px rgba(32, 175, 253, 0.1) inset;
             display: flex;
             flex-direction: column;
 
-            ${theme.breakpoints.down('md')} {
-                min-height: 350px;
-                padding: 20px;
-                 width:100%;
+             
+
+           
+            & > *:not(:first-child) {
+                margin-bottom: 24px; /* стандартный отступ */
             }
 
-            ${theme.breakpoints.down('sm')} {
-                width:100%;
-                padding: 10px;
-           
+            & > *:first-child {
+                margin-bottom: 10px; /* меньше для первого потомка */
             }
+
+            ${theme.breakpoints.down('md')} {
+                min-height: 350px;
+                padding: 24px 24px 0 24px ;
+                width:100%;
+                
+               
+            }
+
         `,
 
         header: css`
@@ -89,12 +96,14 @@ export const useStyles = () => {
             flex-direction: row;
             align-items: center;
             gap: 8px;
+            justify-content: flex-end;
             flex-wrap: wrap;
             ${theme.breakpoints.down('sm')} {
                 width:100%;
-                padding: 10px;
-                justify-content: flex-end;
-            }
+                flex-direction: column;
+                align-items: flex-end;
+                align-content: flex-end
+        
             
         `,
 
@@ -157,7 +166,8 @@ export const useStyles = () => {
             justify-content: flex-start;
 
             ${theme.breakpoints.down('sm')} {
-                gap: 12px;
+                column-gap: 8px;
+                row-gap: 24px;
             }
         `,
 

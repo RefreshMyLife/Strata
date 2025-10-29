@@ -385,7 +385,17 @@ export const useStyles = () => {
             gap: ${theme.spacing(1)};
             flex-wrap: wrap;
               ${theme.breakpoints.down('md')} {
-                order:2;
+                order: 2;
+            }
+            ${theme.breakpoints.down('sm')} {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
             }
         `,
 
@@ -417,6 +427,10 @@ export const useStyles = () => {
 
             &:hover {
                 border-color: ${theme.palette.primary.main};
+            }
+            ${theme.breakpoints.down('sm')} {
+                flex-shrink: 0;
+                white-space: nowrap;
             }
         `,
 
@@ -503,9 +517,12 @@ export const useStyles = () => {
             }
             .no-account & {
                 grid-template-columns: 1.4fr 1fr 1fr;
+                   ${theme.breakpoints.down('md')} {
+                    grid-template-columns:  1.4fr 1fr;
+                    padding: ${theme.spacing(2)};
+                }
                 ${theme.breakpoints.down('sm')} {
                     grid-template-columns: 2fr 1fr;
-                    padding: ${theme.spacing(2)};
                 }
             }
 
@@ -574,7 +591,10 @@ export const useStyles = () => {
             }
             .no-account & {
                 grid-template-columns: 1.4fr 1fr 1fr;
-
+                ${theme.breakpoints.down('md')} {
+                    grid-template-columns:  1.4fr 1fr;
+                    padding: ${theme.spacing(2)};
+                }
                 ${theme.breakpoints.down('sm')} {
                     grid-template-columns: 2fr 1fr;
                 }

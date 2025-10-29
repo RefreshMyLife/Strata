@@ -31,7 +31,7 @@ export const useStyles = () => {
             overflow: hidden;
             padding: 24px 32px 20px 32px;
              ${theme.breakpoints.down('sm')} {
-                 padding: 20px 10px 20px 10px;
+                 padding: 20px;
             }
             .chart-header {
                 display: flex;

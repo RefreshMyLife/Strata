@@ -11,13 +11,13 @@ export const useStyles = () => {
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 1);
       backdrop-filter: blur(10px);
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 0px !important;
       display: none;
-    
-
+      max-height:74px;
+      padding: 0px;
       @media (max-width: 970px) {
         display: block;
       }
@@ -37,12 +37,14 @@ export const useStyles = () => {
         }
 
         @media (max-width: 480px) {
-          padding: 6px 12px 8px;
+          padding: 6px 0px 8px;
+           & > :nth-child(2) {
+            width:85px;
+          }
+                  
         }
 
-        @media (max-width: 380px) {
-          padding: 6px 10px 8px;
-        }
+
 
         .MuiBottomNavigationAction-label {
           font-size: 14px !important;
@@ -50,11 +52,11 @@ export const useStyles = () => {
           &.Mui-selected {
             font-size: 14px !important;
             @media (max-width: 510px) {
-              font-size: 10px !important;
+              font-size: 14px !important;
             }  
           }
            @media (max-width: 510px) {
-            font-size: 10px !important;
+            font-size: 14px !important;
           }  
         }
 

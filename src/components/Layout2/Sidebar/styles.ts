@@ -193,8 +193,8 @@ export const useStyles = () => {
     `,
     mobileLogo: css`
       flex-shrink: 0;
-      height: ${theme.spacing(10)};
-      width: ${theme.spacing(10)};
+      height: 30px;
+      width: auto;
     `,
     burger: css`
       height: ${theme.spacing(6)};
@@ -288,12 +288,15 @@ export const useStyles = () => {
     mobileConnectButton: css`
       margin-left: ${theme.spacing(8)};
       margin-right: ${theme.spacing(8)};
-      // height: ${theme.spacing(9)};
+     
       font-size: ${theme.typography.small1.fontSize};
       border-width: 2px;
-
       margin: 0;
       width: auto;
+
+      @media(max-width:767px){
+         width:122px !important;
+      }
     `,
     claimRewardButton: css`
       margin: ${theme.spacing(4, 4, 0, 4)};

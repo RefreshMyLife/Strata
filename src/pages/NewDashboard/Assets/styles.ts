@@ -25,39 +25,32 @@ export const useStyles = () => {
 
             @media (max-width: 760px) {
                 height: auto;
-                flex-wrap: wrap;
-                gap: 16px;
+                gap: 16px;{
                 align-items: flex-start;
+               
             }
         `,
 
         metricsContainer: css`
             display: contents;
-
-            @media (max-width: 760px) {
-                display: flex;
-                flex-basis: 100%;
-                width: 100%;
-                 justify-content: space-between;
-                gap: 0;
-                order: 3;
-            }
+            
+            
+            @media (max-width: 800px) {
+               display: none;
         `,
 
         spacer: css`
             display: flex;
             align-items: center;
-            gap: 12px;
 
             @media (max-width: 760px) {
-                order: 2;
                 flex: 1;
                 justify-content: flex-end;
             }
         `,
 
         selectedCard: css`
-            /* No special styling for expanded asset cards */
+           
         `,
 
         tokenInfo: css`
@@ -68,7 +61,6 @@ export const useStyles = () => {
 
             @media (max-width: 760px) {
                 min-width: unset;
-                order: 1;
                 flex: 1;
             }
         `,
@@ -113,8 +105,8 @@ export const useStyles = () => {
             min-width: 120px;
             gap: 4px;
 
-            @media (max-width: 760px) {
-               
+            @media (max-width: 800px) {
+                  min-width: unset;
             }
 
             .label {
@@ -264,7 +256,7 @@ export const useStyles = () => {
             align-items: center;
             justify-content: center;
             padding: 8px;
-            margin-left: 12px;
+            margin-left: 4px;
 
             svg {
                 width: 9px;
