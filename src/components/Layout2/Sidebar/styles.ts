@@ -200,10 +200,18 @@ export const useStyles = () => {
       height: ${theme.spacing(6)};
       width: ${theme.spacing(6)};
     `,
+    rightMenu: css`
+      display: flex;
+      align-items: center;
+     
+    `,
     mobileMenu: css`
+     
       .MuiMenu-list {
         display: flex;
         flex-direction: column;
+        padding: 0 !important;
+       
       }
 
       > .MuiPaper-root {
@@ -217,10 +225,12 @@ export const useStyles = () => {
         box-shadow: none;
         padding: ${theme.spacing(0, 0, 16)};
         top: 0 !important;
-
+       
       }
+     
     `,
     mobileListItem: css`
+      
       a {
         color: ${theme.palette.text.primary};
         display: flex;
@@ -231,7 +241,23 @@ export const useStyles = () => {
         justify-content: space-between;
         padding-left: ${theme.spacing(6)};
         padding-right: ${theme.spacing(6)};
+        
+        position: relative;
+        
       }
+      //   ::after {
+      //   content: "";
+      //   position: absolute;
+      //   bottom: 0;
+      //   left: 50%;
+      //   transform: translateX(-50%);
+      //   width: 98%; 
+      //   height: 1px;
+      //   background: rgba(255, 255, 255, 0.08);
+      // }
+      // :last-child::after {
+      //   content: none;
+      // }
       :hover {
         margin-left: 0;
         margin-right: 0;

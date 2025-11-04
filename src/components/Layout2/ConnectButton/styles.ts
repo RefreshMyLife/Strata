@@ -22,7 +22,7 @@ export const useStyles = () => {
                 letter-spacing: 0%;
 
                 ${theme.breakpoints.down('md')} {
-                    font-size: 11px;
+                    font-size: 14px;
                 }
             }
         `,

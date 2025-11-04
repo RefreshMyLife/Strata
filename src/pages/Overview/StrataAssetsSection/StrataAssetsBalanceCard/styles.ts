@@ -19,7 +19,7 @@ export const useStyles = () => {
 
             ${theme.breakpoints.down('md')} {
                 min-height: 350px;
-                padding: 20px;
+                padding: 24px;
                 width: 100%;
             }
         `,
@@ -30,6 +30,11 @@ export const useStyles = () => {
             justify-content: space-between;
             align-items: center;
             margin-bottom: 8px;
+            ${theme.breakpoints.down('sm')} {
+                flex-direction: column-reverse;
+                gap:24px;
+                align-items: flex-start;
+            }
         `,
 
         title: css`
@@ -57,6 +62,9 @@ export const useStyles = () => {
 
             &:hover {
                 background: rgba(36, 44, 51, 1);
+            }
+             ${theme.breakpoints.down('sm')} {
+                width: 100%;
             }
         `,
 

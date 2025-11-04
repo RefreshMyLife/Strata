@@ -30,7 +30,7 @@ export const useStyles = () => {
                 flex-direction: column;
                 min-height: auto;
                 align-items: stretch;
-                padding: 20px;
+                padding: 24px;
                 width: ${isConnected ? '100%' : '100%'};
                 max-width: ${isConnected ? '100%' : '1304px'};
                 gap:10px
@@ -85,6 +85,9 @@ export const useStyles = () => {
             letter-spacing: 0.15px;
             color: ${theme.palette.text.secondary};
             margin: 0;
+             ${theme.breakpoints.down('sm')} {
+                 margin-bottom: 14px;
+            }
         `,
 
         inviteButton: (isConnected: boolean) => css`

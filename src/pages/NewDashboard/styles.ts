@@ -15,7 +15,7 @@ export const useStyles = () => {
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             margin-bottom: 20px;
         `,
-
+            
         headerStyles: css`
             display: flex;
             align-items: center;
@@ -26,6 +26,9 @@ export const useStyles = () => {
             border: none;
             width: 100%;
 
+            @media(max-width:560px){
+                justify-content: space-between;
+            }
             h2 {
                 font-family: 'Chakra Petch', sans-serif;
                 font-weight: 600;

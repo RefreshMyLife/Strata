@@ -294,6 +294,8 @@
       "vestingVaultGroup": "{{stakedTokenSymbol}} vesting vault"
     },
     "menuItems": {
+      "overview": "Overview",
+      "buyAndEarn": "Buy & Earn",
       "account": "Account",
       "convertSrt": "Convert SRT",
       "convertSrtTitle": "Convert SRT to STRATA",

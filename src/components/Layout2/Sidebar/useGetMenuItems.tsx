@@ -14,21 +14,34 @@ const useGetMenuItems = () => {
 
   return useMemo(() => {
     const menuItems: MenuItem[] = [
-      // {
-      //   href: routes.points.path,
-      //   // Translation key: do not remove this comment
-      //   // t('layout.menuItems.vaults')
-      //   i18nKey: 'layout.menuItems.points',
-      //   icon: 'preDeposit',
-      //   //isNew: true,
-      // },
-      // {
-      //   href: routes.dashboard.path,
-      //   // Translation key: do not remove this comment
-      //   // t('layout.menuItems.dashboard')
-      //   i18nKey: 'layout.menuItems.dashboard',
-      //   icon: 'dashboard',
-      // },
+      {
+        href: routes.overview.path,
+        // Translation key: do not remove this comment
+        // t('layout.menuItems.overview')
+        i18nKey: 'layout.menuItems.overview',
+        icon: 'markets',
+      },
+      {
+        href: routes.buyAndEarn.path,
+        // Translation key: do not remove this comment
+        // t('layout.menuItems.buyAndEarn')
+        i18nKey: 'layout.menuItems.buyAndEarn',
+        icon: 'convert',
+      },
+      {
+        href: routes.points.path,
+        // Translation key: do not remove this comment
+        // t('layout.menuItems.points')
+        i18nKey: 'layout.menuItems.points',
+        icon: 'preDeposit',
+      },
+      {
+        href: routes.dashboard.path,
+        // Translation key: do not remove this comment
+        // t('layout.menuItems.dashboard')
+        i18nKey: 'layout.menuItems.dashboard',
+        icon: 'dashboard',
+      },
     ];
 
     // Insert account page if wallet is connected

@@ -23,7 +23,7 @@ export const useStyles = () => {
             
             ${theme.breakpoints.down('md')} {
                 width: 100%;
-                padding: 20px;
+                padding: 24px;
             }
         `,
 
@@ -152,6 +152,10 @@ export const useStyles = () => {
             text-align: center;
             flex: 1;
             gap: 16px;
+          ${theme.breakpoints.down('md')} {
+                width: 100%;
+                margin-bottom: 26px;
+            }
         `,
 
         connectedTitle: css`
