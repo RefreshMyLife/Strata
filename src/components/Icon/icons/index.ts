@@ -1,4 +1,8 @@
 export { default as dashboard } from './dashboard';
+export { default as dashboardIcon } from './dashboardIcon';
+export { default as overviewIcon } from './overviewIcon';
+export { default as buyEarnIcon } from './buyEarnIcon';
+export { default as pointsIcon } from './pointsIcon';
 export { default as preDeposit } from './preDeposit';
 export { default as docs } from './docs';
 export { default as bugBounty } from './bugBounty';

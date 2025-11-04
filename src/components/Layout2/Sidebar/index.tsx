@@ -6,21 +6,13 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Menu from '@mui/material/Menu';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
-import { href } from 'react-router';
 import { useTranslation } from 'translation';
 
 import { ReactComponent as LogoNoText } from 'assets/img/StrataLogoPureV2.svg';
 import { ReactComponent as LogoDesktop } from 'assets/img/StrataLogoWithTextV2.svg';
-import { routes } from 'src/constants/routing';
 
 import { Icon } from '../../Icon';
 import ConnectButton from '../ConnectButton';
-import {
-    STRATA_DOCS_AUDITS_URL,
-    STRATA_DOCS_FAQ_URL,
-    STRATA_DOCS_URL,
-    STRATA_MIRROR_URL,
-} from '../Footer2/constants';
 import { Toolbar } from '../Toolbar';
 import Link from './Link';
 import { useStyles } from './styles';
@@ -117,7 +109,7 @@ export const SidebarUi: React.FC = () => {
                         {/* <SelectChainButton cssButton={styles.mobileSelectChainButton} chevron={true} /> */}
                         <div css={styles.rightMenu}>
                             {' '}
-                            <ConnectButton fullWidth css={styles.mobileConnectButton} />
+                            {/* <ConnectButton fullWidth css={styles.mobileConnectButton} /> */}
                             <button type="button" onClick={closeMenu} css={styles.actionButton}>
                                 <Icon name="closeRounded" css={styles.burger} />
                             </button>
@@ -178,7 +170,7 @@ export const SidebarUi: React.FC = () => {
                                         )}
                                     </div>
 
-                                    <ChevronIcon />
+                                    <Icon name="arrowRight" css={styles.mobileArrow} />
                                 </Link>
                             </ListItemButton>
                         ))}

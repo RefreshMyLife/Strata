@@ -19,28 +19,28 @@ const useGetMenuItems = () => {
         // Translation key: do not remove this comment
         // t('layout.menuItems.overview')
         i18nKey: 'layout.menuItems.overview',
-        icon: 'markets',
+        icon: 'overviewIcon',
       },
       {
         href: routes.buyAndEarn.path,
         // Translation key: do not remove this comment
         // t('layout.menuItems.buyAndEarn')
         i18nKey: 'layout.menuItems.buyAndEarn',
-        icon: 'convert',
+        icon: 'buyEarnIcon',
       },
       {
         href: routes.points.path,
         // Translation key: do not remove this comment
         // t('layout.menuItems.points')
         i18nKey: 'layout.menuItems.points',
-        icon: 'preDeposit',
+        icon: 'pointsIcon',
       },
       {
         href: routes.dashboard.path,
         // Translation key: do not remove this comment
         // t('layout.menuItems.dashboard')
         i18nKey: 'layout.menuItems.dashboard',
-        icon: 'dashboard',
+        icon: 'dashboardIcon',
       },
     ];
 
