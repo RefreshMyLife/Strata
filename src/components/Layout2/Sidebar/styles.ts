@@ -334,5 +334,45 @@ export const useStyles = () => {
     padding-bottom: 5px;
     min-width: 48px;
     `,
+    sidebarFooter: css`
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-conntent: space-between;
+      width: 100%;
+      padding: ${theme.spacing(6)} ${theme.spacing(4)};
+      margin-top: auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    `,
+    socialIcons: css`
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: ${theme.spacing(6)};
+    `,
+    socialLink: css`
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s;
+
+      :hover {
+        opacity: 0.7;
+      }
+    `,
+    socialIcon: css`
+      width: 24px;
+      height: 24px;
+      opacity:0.5;
+    `,
+    copyright: css`
+      margin-top: 20px;
+      rgba(144, 160, 172, 0.8)
+      font-size: 14px;
+      font-weight:500;
+      text-align: center;
+      line-height: 140%;
+      font-family: 'Chakra Petch', sans-serif;
+    `,
   };
 };

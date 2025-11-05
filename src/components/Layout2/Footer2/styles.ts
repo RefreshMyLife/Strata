@@ -77,6 +77,9 @@ export const useStyles = () => {
                 margin-top: 0px;
                 padding-top:10px
             }
+             ${theme.breakpoints.down('sm')} {
+                display: none;
+            }
         `,
         blockInfo: css`
             white-space: nowrap;

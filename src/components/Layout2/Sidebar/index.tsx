@@ -10,10 +10,24 @@ import { useTranslation } from 'translation';
 
 import { ReactComponent as LogoNoText } from 'assets/img/StrataLogoPureV2.svg';
 import { ReactComponent as LogoDesktop } from 'assets/img/StrataLogoWithTextV2.svg';
+import img_discord from 'assets/img/icons/discord.svg';
+import img_gitbook from 'assets/img/icons/gitbook.svg';
+import img_github from 'assets/img/icons/github.svg';
+import img_notion from 'assets/img/icons/notion.svg';
+import img_telegram from 'assets/img/icons/telegram.svg';
+import img_twitter from 'assets/img/icons/twitter.svg';
 
 import { Icon } from '../../Icon';
 import ConnectButton from '../ConnectButton';
 import { Toolbar } from '../Toolbar';
+import {
+    STRATA_DISCORD_URL,
+    STRATA_DOCS_URL,
+    STRATA_GITHUB_URL,
+    STRATA_MIRROR_URL,
+    STRATA_TELEGRAM_URL,
+    STRATA_TWITTER_URL,
+} from '../Footer2/constants';
 import Link from './Link';
 import { useStyles } from './styles';
 import useGetMenuItems from './useGetMenuItems';
@@ -109,7 +123,7 @@ export const SidebarUi: React.FC = () => {
                         {/* <SelectChainButton cssButton={styles.mobileSelectChainButton} chevron={true} /> */}
                         <div css={styles.rightMenu}>
                             {' '}
-                            {/* <ConnectButton fullWidth css={styles.mobileConnectButton} /> */}
+                            <ConnectButton fullWidth css={styles.mobileConnectButton} />
                             <button type="button" onClick={closeMenu} css={styles.actionButton}>
                                 <Icon name="closeRounded" css={styles.burger} />
                             </button>
@@ -196,6 +210,32 @@ export const SidebarUi: React.FC = () => {
                             </ListItemButton>
                         ))} */}
                     </List>
+
+                    <div css={styles.sidebarFooter}>
+                        <div css={styles.socialIcons}>
+                            <a css={styles.socialLink} href={STRATA_DOCS_URL} target="_blank" rel="noreferrer">
+                                <img src={img_gitbook} alt="GitBook" css={styles.socialIcon} />
+                            </a>
+                            <a css={styles.socialLink} href={STRATA_TWITTER_URL} target="_blank" rel="noreferrer">
+                                <img src={img_twitter} alt="Twitter" css={styles.socialIcon} />
+                            </a>
+                            <a css={styles.socialLink} href={STRATA_DISCORD_URL} target="_blank" rel="noreferrer">
+                                <img src={img_discord} alt="Discord" css={styles.socialIcon} />
+                            </a>
+                            <a css={styles.socialLink} href={STRATA_TELEGRAM_URL} target="_blank" rel="noreferrer">
+                                <img src={img_telegram} alt="Telegram" css={styles.socialIcon} />
+                            </a>
+                            <a css={styles.socialLink} href={STRATA_GITHUB_URL} target="_blank" rel="noreferrer">
+                                <img src={img_github} alt="GitHub" css={styles.socialIcon} />
+                            </a>
+                            <a css={styles.socialLink} href={STRATA_MIRROR_URL} target="_blank" rel="noreferrer">
+                                <img src={img_notion} alt="Notion" css={styles.socialIcon} />
+                            </a>
+                        </div>
+                        <Typography variant="body2" css={styles.copyright}>
+                            © 2025 Strata Labs
+                        </Typography>
+                    </div>
                 </Menu>
             </div>
         </>
