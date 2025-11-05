@@ -343,12 +343,14 @@ export const useStyles = () => {
       padding: ${theme.spacing(6)} ${theme.spacing(4)};
       margin-top: auto;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
+
     `,
     socialIcons: css`
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: ${theme.spacing(6)};
+      justify-content: space-between;
+      width: 100%;
     `,
     socialLink: css`
       display: flex;
