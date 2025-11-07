@@ -18,7 +18,7 @@ export const useStyles = () => {
       display: none;
       max-height:74px;
       padding: 0px;
-      @media (max-width: 970px) {
+      ${theme.breakpoints.down('md')} {
         display: block;
       }
     `,

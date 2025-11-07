@@ -30,12 +30,12 @@ export const useStyles = () => {
             }
         `,
 
-        cardsGrid: css`
+        cardsGridNotConnected: css`
             max-width: 1304px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-           gap: 20px;
+            gap: 20px;
 
             ${theme.breakpoints.between('md', 'xl')} {
                 grid-template-columns: 1fr 1fr; 
@@ -53,6 +53,33 @@ export const useStyles = () => {
                 width: 100%; 
                 min-width: 0;
                 }
+            }
+
+            ${theme.breakpoints.down('md')} {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            ${theme.breakpoints.down('sm')} {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+               
+            }
+        `,
+        cardsGrid: css`
+            max-width: 1304px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+
+            ${theme.breakpoints.between('md', 'xl')} {
+                grid-template-columns: 1fr; 
+                grid-auto-rows: auto;
+
+               
             }
 
             ${theme.breakpoints.down('md')} {

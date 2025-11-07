@@ -71,13 +71,13 @@ export const useStyles = () => {
 
             @media (max-width: 940px) {
                 margin-top: 15px;
-                padding-bottom: 160px;
+            
             }
             ${theme.breakpoints.down('md')} {
                 margin-top: 0px;
                 padding-top:10px
             }
-             ${theme.breakpoints.down('sm')} {
+             ${theme.breakpoints.down('md')} {
                 display: none;
             }
         `,

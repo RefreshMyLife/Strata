@@ -30,6 +30,7 @@ import {
     STRATA_GITHUB_URL,
     STRATA_MEDIUM_URL,
     STRATA_MIRROR_URL,
+    STRATA_PREDEPOSIT_URL,
     STRATA_TWITTER_URL,
 } from '../Footer2/constants';
 import { useStyles } from './styles';
@@ -126,7 +127,6 @@ export const ConnectButtonUi: React.FC<ConnectButtonProps> = ({
                         ]}
                     />
                 </Button>
-
                 <Menu
                     id="wallet-menu"
                     anchorEl={anchorEl}
@@ -261,6 +261,16 @@ export const ConnectButtonMenuUi: React.FC<ConnectButtonProps> = ({
                     },
                 }}
             >
+                <MenuItem
+                    css={styles.preDepositsLink}
+                    onClick={() => {
+                        window.open(STRATA_PREDEPOSIT_URL, '_blank');
+                        handleMenuClose();
+                    }}
+                >
+                    <span>Pre-desopits</span>
+                    <CheveronDown />
+                </MenuItem>
                 {menuItems.map(item => (
                     <MenuItem
                         key={item.label}

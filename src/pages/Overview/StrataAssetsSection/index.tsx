@@ -45,7 +45,7 @@ const StrataAssetsSection: React.FC<StrataAssetsSectionProps> = ({
                     Strata x Ethena Assets
                 </Typography>
 
-                <div css={styles.cardsGrid}>
+                <div css={styles.cardsGridNotConnected}>
                     <StrataAssetsBalanceCard
                         showViewHistory={showViewHistory}
                         setShowViewHistory={setShowViewHistory}

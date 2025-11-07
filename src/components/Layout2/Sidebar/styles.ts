@@ -187,9 +187,11 @@ export const useStyles = () => {
       justify-content: space-between;
       align-items: center;
       padding: ${theme.spacing(4)};
-      @media (max-width: 970px) {
-        display: flex;
+      
+      ${theme.breakpoints.down('md')} {
+         display: flex;
       }
+      
     `,
     mobileLogo: css`
       flex-shrink: 0;
@@ -319,9 +321,8 @@ export const useStyles = () => {
       border-width: 2px;
       margin: 0;
       width: auto;
-
-      @media(max-width:767px){
-         width:122px !important;
+    ${theme.breakpoints.down('md')} {
+        width:122px !important;
       }
     `,
     claimRewardButton: css`

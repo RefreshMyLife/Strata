@@ -14,3 +14,5 @@ export const STRATA_TELEGRAM_URL = 'https://t.me/strata_official';
 
 export const STRATA_MEDIUM_URL = 'https://mirror.xyz/0xf911b79f573dD758166FB33dE96d2727e25071b6';
 export const STRATA_MIRROR_URL = 'https://mirror.xyz/0xf911b79f573dD758166FB33dE96d2727e25071b6';
+
+export const STRATA_PREDEPOSIT_URL = 'https://deposit.strata.money/#/predeposit';

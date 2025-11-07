@@ -79,7 +79,11 @@ const Header2: React.FC = () => {
                     <Link href={routes.dashboard.path}>Dashboard</Link>
                 </ListItemButton>
 
-                <ListItemButton component="li" css={[styles.menuItem]} disableRipple>
+                <ListItemButton
+                    component="li"
+                    css={[styles.menuItem, styles.menuPreDeposit]}
+                    disableRipple
+                >
                     <Link href="https://deposit.strata.money">
                         PRE-DEPOSITS
                         <span css={styles.menuItemBadge}>Ended</span>

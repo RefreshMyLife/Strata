@@ -218,6 +218,13 @@ export const useStyles = () => {
                 width: 16px;
                 height: 16px;
             }
+        `,
+        preDepositsLink: css`
+            display:none  !important;
+            @media (max-width: 970px) {
+                display: block  !important;
+            }
         `
+
     };
 };

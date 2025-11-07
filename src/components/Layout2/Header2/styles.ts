@@ -24,13 +24,12 @@ export const useStyles = () => {
       align-items: center;
 
       ${theme.breakpoints.down('md')} {
+        display:none;
         margin: 5px;
         padding-bottom: 5px;
       }
 
-      @media (max-width: 970px) {
-        display: none;
-      }
+     
     `,
     toolbarLogo: css`
         padding-left: ${theme.spacing(6)} !important;
@@ -93,11 +92,9 @@ export const useStyles = () => {
       align-items: center;
       gap: clamp(20px, 2vw, 32px);
 
-      ${theme.breakpoints.down('md')} {
-        padding-left: 10px !important;
-        padding-right: 5px;
-        gap: clamp(8px, 1.5vw, 16px);
-        flex: 1;
+      ${theme.breakpoints.down('lg')} {
+  
+        gap: 10px;
       }
     `,
     menuItem: css`
@@ -140,6 +137,11 @@ export const useStyles = () => {
           letter-spacing: 0.02em;
           padding: 4px 8px;
         }
+      }
+    `,
+    menuPreDeposit: css`
+       @media (max-width: 970px) {
+        display: none;
       }
     `,
     menuItemSelected: css`
