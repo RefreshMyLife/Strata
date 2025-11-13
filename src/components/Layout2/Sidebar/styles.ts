@@ -205,6 +205,7 @@ export const useStyles = () => {
     rightMenu: css`
       display: flex;
       align-items: center;
+      gap: 8px;
      
     `,
     mobileMenu: css`
@@ -300,7 +301,7 @@ export const useStyles = () => {
       align-items: center;
     `,
     doublePadding: css`
-      padding: ${theme.spacing(2)} ${theme.spacing(4)};
+      padding: ${theme.spacing(4)} ${theme.spacing(4)};
     `,
     actionButton: css`
       flex-shrink: 0;

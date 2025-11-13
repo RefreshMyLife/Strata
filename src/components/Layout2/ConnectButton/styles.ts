@@ -27,7 +27,7 @@ export const useStyles = () => {
             }
         `,
         button: css`
-            width: 122px !important;
+            min-width: 122px !important;
             height: 40px !important;
             border-radius: 5px !important;
             padding: 10px 12px !important;

@@ -39,7 +39,7 @@ export const useStyles = () => {
         `,
         conntectBtn: css`
           ${theme.breakpoints.down('sm')} {
-              width:100% !important;
+              min-width:100% !important;
             }
         `,
         iconContainer: css`
