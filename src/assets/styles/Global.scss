@@ -71,6 +71,10 @@ body {
     top: 0;
     left: 0;
 }
+body, html {
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
+}
 
 body[page='account'],
 body[page='legal'] {
