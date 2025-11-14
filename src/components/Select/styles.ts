@@ -28,10 +28,10 @@ export const useStyles = () => {
             width: 100%;
             max-width: 520px;
             max-height: 80vh;
-           
+        
             display: flex;
             flex-direction: column;
-           
+        
             background: rgba(12, 18, 21, 1);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow:
@@ -80,9 +80,25 @@ export const useStyles = () => {
                     }
                 }
             }
+
+            /* Стили для iOS устройств (включая iPhone X) */
             @supports (-webkit-touch-callout: none) {
-            ${theme.breakpoints.down('sm')} {
-                margin-bottom: 20px; 
+                ${theme.breakpoints.down('sm')} {
+                    margin-bottom: 20px;
+                    /* Добавляем padding для безопасной зоны (notch) */
+                    padding-bottom: env(safe-area-inset-bottom);
+                }
+            }
+
+            /* Специально для iPhone X и моделей с notch */
+            @media only screen 
+                and (device-width: 375px) 
+                and (device-height: 812px) 
+                and (-webkit-device-pixel-ratio: 3) {
+                ${theme.breakpoints.down('sm')} {
+                    margin-bottom: 80px;
+                    padding-bottom: max(20px, env(safe-area-inset-bottom));
+                }
             }
         `,
         dialogHeading: css`
