@@ -28,10 +28,10 @@ export const useStyles = () => {
             width: 100%;
             max-width: 520px;
             max-height: 80vh;
-            overflow-x: hidden;
+           
             display: flex;
             flex-direction: column;
-
+           
             background: rgba(12, 18, 21, 1);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow:
@@ -79,6 +79,10 @@ export const useStyles = () => {
                         opacity: 1;
                     }
                 }
+            }
+            @supports (-webkit-touch-callout: none) {
+            ${theme.breakpoints.down('sm')} {
+                margin-bottom: 70px; 
             }
         `,
         dialogHeading: css`
