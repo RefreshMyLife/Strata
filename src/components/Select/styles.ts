@@ -80,10 +80,7 @@ export const useStyles = () => {
                     }
                 }
             }
-            @supports (-webkit-touch-callout: none) {
-            ${theme.breakpoints.down('sm')} {
-                margin-bottom: 70px; 
-            }
+            
         `,
         dialogHeading: css`
             position: relative;
