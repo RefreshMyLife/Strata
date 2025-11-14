@@ -28,7 +28,7 @@ export const useStyles = () => {
             width: 100%;
             max-width: 520px;
             max-height: 80vh;
-            overflow: hidden;
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
 
