@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from 'react';
+import { Token } from 'src/types';
 
 import { TPreDepositData } from 'src/clients/api/queries/useGetPreDeposits/useGetPreDepositData/useGetPreDepositPoolData';
 import { FormikTokenTextField } from 'src/components/Form/FormikTokenTextField';
 
 import { useStyles } from './TokenSelectPanelCss';
-import { Token } from 'src/types';
 
 type ActiveModal = 'stake' | 'withdraw';
 
@@ -54,14 +54,13 @@ export const TokenSelectPanel: React.FC<TokenSelectPanelProps> = ({
         <div css={styles.panelSection}>
             <FormikTokenTextField
                 label={label}
-                name={name ?? "amount"}
+                name={name ?? 'amount'}
                 token={token}
                 tokens={tokens}
                 value={value}
                 showPercentButtons={showPercentButtons}
-
-                onTokenSelected = { onTokenSelected }
-                onAmountSelected = { onInput }
+                onTokenSelected={onTokenSelected}
+                onAmountSelected={onInput}
                 disabled={disabled}
                 readOnly={readonly}
                 css={styles.tokenTextField}

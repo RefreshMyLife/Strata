@@ -8,20 +8,20 @@ import { Button, TokenIcon, TransactionStep } from 'components';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'translation';
 import { Token } from 'types';
-import { convertWeiToTokens, formatTokensToReadableValue, } from 'utilities';
+import { convertWeiToTokens, formatTokensToReadableValue } from 'utilities';
 
+import { TokenSelectPanel } from '../components/TokenSelectPanel';
 import useConvertWeiToReadableTokenString from 'hooks/useConvertWeiToReadableTokenString';
 import { TPreDepositData } from 'src/clients/api/queries/useGetPreDeposits/useGetPreDepositData/useGetPreDepositPoolData';
+import { AmountForm } from 'src/containers/AmountForm';
+import { BigNumberUtil } from 'src/utilities/BigNumberUtil';
+import { NumberUtil } from 'src/utilities/NumberUtilt';
 
+import { TransactionFormUi } from '../TransactionForm';
 import { StakeModal } from '../modals';
+import { BuyFormUi } from './BuyForm';
 import { useStyles } from './styles';
 import TEST_IDS from './testIds';
-import { NumberUtil } from 'src/utilities/NumberUtilt';
-import { BigNumberUtil } from 'src/utilities/BigNumberUtil';
-import { TokenSelectPanel } from '../components/TokenSelectPanel';
-import { AmountForm } from 'src/containers/AmountForm';
-import { TransactionFormUi } from '../TransactionForm';
-import { BuyFormUi } from './BuyForm';
 
 type ActiveModal = 'stake' | 'withdraw';
 
@@ -90,7 +90,6 @@ export const BuyPanelUi: React.FC<BuyPanelUiProps> = ({
         // }
     };
 
-
     let status = PreDepositStatus.Active;
 
     // const readableUserStakedTokens = useConvertWeiToReadableTokenString({
@@ -98,7 +97,6 @@ export const BuyPanelUi: React.FC<BuyPanelUiProps> = ({
     //     valueWei: userStaked,
     //     addSymbol: false,
     // });
-
 
     const totalLocked = 2_500_000;
     //const totalStackedNum = totalStaked.div(10 ** stakedToken.decimals).toNumber();
@@ -142,29 +140,25 @@ export const BuyPanelUi: React.FC<BuyPanelUiProps> = ({
         [PreDepositStatus.Ended]: t('preDepositItem.stakeButtonEnded'),
     }[status];
 
-    const handleSubmit = async () => {
-
-    };
+    const handleSubmit = async () => {};
 
     return (
         <>
             <Paper css={styles.container} className={className}>
-
                 <BuyFormUi
                     predeposit={preDeposit}
                     token={preDeposit.USDe}
-                    tokens = {supportedTokens}
-                    availableTokensLabel='Your balance'
+                    tokens={supportedTokens}
+                    availableTokensLabel="Your balance"
                     availableTokensWei={preDeposit.accountStaked}
-                    submitButtonLabel='Withdraw pUSDe'
-                    submitButtonDisabledLabel='Select pUSDe to withdraw'
-                    isTokenApproved={ true }
+                    submitButtonLabel="Withdraw pUSDe"
+                    submitButtonDisabledLabel="Select pUSDe to withdraw"
+                    isTokenApproved={true}
                     isSubmitting={isDepositInProgress}
-                    onSubmit={ onDeposit }
+                    onSubmit={onDeposit}
                     transactionModalProps={transactionModalProps}
                     tokenSelectModalProps={tokenSelectModalProps}
                 />
-
             </Paper>
 
             {activeModal === 'stake' && (
@@ -179,9 +173,9 @@ export type BuyPanelProps = Omit<
     'onStake' | 'onWithdraw' | 'closeActiveModal' | 'activeModal' | 'isWithdrawLoading'
 >;
 
-const BuyPanel: React.FC<BuyPanelProps & { transactionModalProps?: any; tokenSelectModalProps?: any }> = ({ preDeposit, transactionModalProps, tokenSelectModalProps, ...buyPanelUiProps }) => {
-
-
+const BuyPanel: React.FC<
+    BuyPanelProps & { transactionModalProps?: any; tokenSelectModalProps?: any }
+> = ({ preDeposit, transactionModalProps, tokenSelectModalProps, ...buyPanelUiProps }) => {
     const [activeModal, setActiveModal] = useState<ActiveModal | undefined>();
     const onStake = () => {
         // Block action is user has LUNA or UST enabled as collateral
@@ -208,7 +202,5 @@ const BuyPanel: React.FC<BuyPanelProps & { transactionModalProps?: any; tokenSel
         />
     );
 };
-
-
 
 export default BuyPanel;

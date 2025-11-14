@@ -135,6 +135,7 @@ export const TokenTextField: React.FC<TokenTextFieldProps> = ({
                     disabled={disabled}
                     {...otherProps}
                 />
+
                 <div css={styles.amounts}>
                     <div>
                         <TokenPrice token={token} amount={amountEther} />{' '}

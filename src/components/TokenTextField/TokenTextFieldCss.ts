@@ -31,6 +31,9 @@ export const useStyles = () => {
         input: css`
             font-size: 2.5em;
             color: white;
+             ${theme.breakpoints.down('sm')} {
+                min-height:50px !important;
+            }
         `,
     };
 };

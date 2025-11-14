@@ -38,6 +38,7 @@
  * 3. Use the progression system in handleApprove() and handleDeposit() functions
  */
 import { Box } from '@mui/material';
+import { getTransaction, getTransactionReceipt } from '@wagmi/core';
 import BigNumber from 'bignumber.js';
 import {
     ApproveTokenStepsProps,
@@ -51,6 +52,7 @@ import { $bigint } from 'dequanto/utils/$bigint';
 import { ContractReceipt } from 'ethers';
 import React, { useEffect, useMemo, useState } from 'react';
 import config from 'src/config';
+import web3Config from 'src/libs/wallet/Web3Wrapper/config';
 import { getUniqueContract } from 'src/packages/contracts';
 import { CommonService } from 'src/services/CommonService';
 import { OracleService } from 'src/services/OracleService';
@@ -60,6 +62,7 @@ import { TrancheService } from 'src/services/TrancheService';
 import { useTranslation } from 'translation';
 import { Token } from 'types';
 import { convertTokensToWei, convertWeiToTokens } from 'utilities';
+import { useAccount } from 'wagmi';
 
 import { TokenSelectPanel } from '../components/TokenSelectPanel';
 import img_chevronDown from 'assets/img/icons/chevron-down.svg';
@@ -80,9 +83,6 @@ import { PromiseUtil } from 'src/utilities/PromiseUtil';
 
 import { useQuoteState } from '../state/QuoteState';
 import { useStyles } from './styles';
-import { getTransaction, getTransactionReceipt } from '@wagmi/core';
-import web3Config from 'src/libs/wallet/Web3Wrapper/config';
-import { useAccount } from 'wagmi';
 
 export interface BuyFormUiProps {
     predeposit: TPreDepositData;
@@ -205,7 +205,6 @@ export const BuyFormUi: React.FC<BuyFormUiProps> = ({
 
     const { data: maxMint } = TrancheService.useMaxMint(accountAddress);
 
-
     const validation = useMemo(() => {
         if (!selectedFromAmount) {
             return { valid: false, message: 'Enter Amount' };
@@ -251,7 +250,6 @@ export const BuyFormUi: React.FC<BuyFormUiProps> = ({
         return fromPps / toPps;
     }, [erc4626PPS, selectedFromToken, selectedToToken]);
 
-
     const availableTokensWei = predeposit.balances?.[selectedFromToken.symbol] ?? BigNumber(0);
     const handleTransactionMutation = useHandleTransactionMutation();
     const invalidateQueries = () => {
@@ -289,8 +287,12 @@ export const BuyFormUi: React.FC<BuyFormUiProps> = ({
     //     });
     // },[1]);
 
-
-    const doDeposit = async (vault: Token, token: Token, amountWei: bigint, permitData: null | { deadline, v, r, s }) => {
+    const doDeposit = async (
+        vault: Token,
+        token: Token,
+        amountWei: bigint,
+        permitData: null | { deadline; v; r; s },
+    ) => {
         setLoadingState(true);
         try {
             const depositor = getUniqueContract({
@@ -299,36 +301,36 @@ export const BuyFormUi: React.FC<BuyFormUiProps> = ({
                 chainId: config.networkId,
             });
 
-            let tx = permitData == null
-                ? await depositor.deposit(
-                    vault.address,
-                    token.address,
-                    amountWei.toString(10),
-                    accountAddress,
-                    {
-                        swapDeadline: 0,
-                        swapAmountOutMinimum: 0,
-                        swapTokenOut: '0x0000000000000000000000000000000000000000',
-                        minShares: 0,
-                    },
-                )
-                : await depositor.depositWithPermit(
-                    vault.address,
-                    token.address,
-                    amountWei.toString(10),
-                    accountAddress,
-                    {
-                        swapDeadline: 0,
-                        swapAmountOutMinimum: 0,
-                        swapTokenOut: '0x0000000000000000000000000000000000000000',
-                        minShares: 0
-                    },
-                    permitData.deadline,
-                    permitData.v,
-                    permitData.r,
-                    permitData.s,
-                )
-                ;
+            let tx =
+                permitData == null
+                    ? await depositor.deposit(
+                          vault.address,
+                          token.address,
+                          amountWei.toString(10),
+                          accountAddress,
+                          {
+                              swapDeadline: 0,
+                              swapAmountOutMinimum: 0,
+                              swapTokenOut: '0x0000000000000000000000000000000000000000',
+                              minShares: 0,
+                          },
+                      )
+                    : await depositor.depositWithPermit(
+                          vault.address,
+                          token.address,
+                          amountWei.toString(10),
+                          accountAddress,
+                          {
+                              swapDeadline: 0,
+                              swapAmountOutMinimum: 0,
+                              swapTokenOut: '0x0000000000000000000000000000000000000000',
+                              minShares: 0,
+                          },
+                          permitData.deadline,
+                          permitData.v,
+                          permitData.r,
+                          permitData.s,
+                      );
             let result = await tx.wait();
             return result;
         } finally {
@@ -392,7 +394,7 @@ export const BuyFormUi: React.FC<BuyFormUiProps> = ({
         setShowTransactionModal(true);
         setTransactionSteps([
             { status: 'in_progress', title: STEP_APPROVE },
-            { status: 'pending',     title: STEP_TX },
+            { status: 'pending', title: STEP_TX },
         ]);
 
         let permitData: { deadline; v; r; s };
@@ -410,8 +412,8 @@ export const BuyFormUi: React.FC<BuyFormUiProps> = ({
             } catch (error) {
                 console.error(`Error permit`, error);
                 setTransactionSteps([
-                    { status: 'failed',   title: STEP_APPROVE },
-                    { status: 'pending',  title: STEP_TX },
+                    { status: 'failed', title: STEP_APPROVE },
+                    { status: 'pending', title: STEP_TX },
                 ]);
                 setTimeout(() => setShowTransactionModal(false), 2000);
                 setLoadingState(false);
@@ -419,7 +421,11 @@ export const BuyFormUi: React.FC<BuyFormUiProps> = ({
             }
         } else {
             try {
-                let allowanceWei = await TokenService.getAllowance(tokenFrom, depositor.address, accountAddress);
+                let allowanceWei = await TokenService.getAllowance(
+                    tokenFrom,
+                    depositor.address,
+                    accountAddress,
+                );
                 let approvalReceipt = await handleTransactionMutation({
                     label: 'Processing Approval',
                     labelSuccess: 'Approval Successful',
@@ -431,12 +437,12 @@ export const BuyFormUi: React.FC<BuyFormUiProps> = ({
                             amountWei.toString(),
                         );
                         return await tx.wait();
-                    }
+                    },
                 });
             } catch (error) {
                 console.error(`Error processing approval`, error);
                 setTransactionSteps([
-                    { status: 'failed',      title: STEP_APPROVE },
+                    { status: 'failed', title: STEP_APPROVE },
                     { status: 'in_progress', title: STEP_TX },
                 ]);
                 setTimeout(() => setShowTransactionModal(false), 2000);
@@ -446,7 +452,7 @@ export const BuyFormUi: React.FC<BuyFormUiProps> = ({
         }
 
         setTransactionSteps([
-            { status: 'completed',   title: STEP_APPROVE },
+            { status: 'completed', title: STEP_APPROVE },
             { status: 'in_progress', title: STEP_TX },
         ]);
 
@@ -455,7 +461,7 @@ export const BuyFormUi: React.FC<BuyFormUiProps> = ({
                 label: 'Processing Order',
                 labelSuccess: 'Transaction Successful',
                 mutate: async () => {
-                    return doDeposit(tokenTo, tokenFrom, amountWei, permitData)
+                    return doDeposit(tokenTo, tokenFrom, amountWei, permitData);
                 },
                 successTransactionModalProps: contractReceipt => ({
                     title: 'Transaction Successful',
@@ -481,16 +487,13 @@ export const BuyFormUi: React.FC<BuyFormUiProps> = ({
             console.error(`Error processing deposit`, error);
             setTransactionSteps([
                 { status: 'completed', title: STEP_APPROVE },
-                { status: 'failed',    title: STEP_TX },
+                { status: 'failed', title: STEP_TX },
             ]);
             setTimeout(() => setShowTransactionModal(false), 2000);
             setLoadingState(false);
             throw error;
         }
-
-
     };
-
 
     const setFromSelectedTokenHandler = (t: Token) => {
         let selected = tokens.find(x => x.address === t.address);
@@ -639,11 +642,11 @@ export const BuyFormUi: React.FC<BuyFormUiProps> = ({
           >
             {isSubmitting ? 'Approve' : formatBuyButtonTitle()}
           </PrimaryButton>} */}
-                        {(action === 'deposit') && (
+                        {action === 'deposit' && (
                             <PrimaryButton
                                 onClick={() => handleDeposit()}
                                 loading={isSubmitting}
-                                disabled={ validation.valid !== true }
+                                disabled={validation.valid !== true}
                                 fullWidth
                                 css={[
                                     !selectedFromAmount
