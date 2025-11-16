@@ -84,7 +84,7 @@ export const useStyles = () => {
             /* Стили для iOS устройств (включая iPhone X) */
             @supports (-webkit-touch-callout: none) {
                 ${theme.breakpoints.down('sm')} {
-                    margin-bottom: 80px;
+                    margin-bottom: 40px;
                     /* Добавляем padding для безопасной зоны (notch) */
                     padding-bottom: env(safe-area-inset-bottom);
                 }
