@@ -154,7 +154,7 @@ export const TransactionFormUi: React.FC<TransactionFormUiProps> = ({
                         data-testid={TEST_IDS.tokenTextField}
                         css={styles.tokenTextField}
                     />
-                    asdasd
+                    
                     <div css={styles.getRow({ isLast: true })}>
                         <LabeledInlineContent
                             data-testid={TEST_IDS.availableTokens}

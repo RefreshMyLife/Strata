@@ -84,11 +84,9 @@ export const SidebarUi: React.FC = () => {
                     {/* <LogoNoText onClick={onLogoClicked} /> */}
                     <div
                         style={{
-                            width: '100%',
                             display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'end',
-                            paddingRight: '8px',
+                            gap: '8px',
+                            alignItems: 'center',
                         }}
                     >
                         <ConnectButton
@@ -96,12 +94,13 @@ export const SidebarUi: React.FC = () => {
                             css={styles.mobileConnectButton}
                             text="Connect Wallet"
                         />
-                    </div>
-                    {/* <SelectChainButton cssButton={styles.mobileSelectChainButton} iconOnly={true} /> */}
 
-                    <button type="button" onClick={openMenu} css={styles.actionButton}>
-                        <Icon name="burger" css={styles.burger} />
-                    </button>
+                        {/* <SelectChainButton cssButton={styles.mobileSelectChainButton} iconOnly={true} /> */}
+
+                        <button type="button" onClick={openMenu} css={styles.actionButton}>
+                            <Icon name="burger" css={styles.burger} />
+                        </button>
+                    </div>
                 </div>
 
                 <Menu
