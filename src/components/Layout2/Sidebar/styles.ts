@@ -129,7 +129,7 @@ export const useStyles = () => {
       display: block;
       color: var(--color-text-main);
       position: relative;
-
+      font-family: 'Chakra Petch', sans-serif;
       ${theme.breakpoints.down('xl')} {
         display: none;
       }
@@ -244,7 +244,7 @@ export const useStyles = () => {
         justify-content: space-between;
         padding-left: ${theme.spacing(6)};
         padding-right: ${theme.spacing(6)};
-        
+ 
         position: relative;
         
       }
@@ -289,6 +289,7 @@ export const useStyles = () => {
       justify-content: center;
       display: inline-flex;
       align-items: center;
+
       svg {
         margin-right: ${theme.spacing(4)};
       }
@@ -376,7 +377,7 @@ export const useStyles = () => {
       font-weight:500;
       text-align: center;
       line-height: 140%;
-      font-family: 'Chakra Petch', sans-serif;
+    
     `,
   };
 };
